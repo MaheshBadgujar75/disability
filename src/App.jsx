@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { LanguageProvider, useLanguage } from "./components/LanguageContext.jsx";
-import Navbar from "./components/Navbar.jsx";
+import Navbar from "/components/Navbar.jsx";
 import DisabilityList from "./components/DisabilityTypes.jsx";
 import Home from "./components/Home.jsx";
 // import GovernmentSchemes from "./components/governmentschemes";
