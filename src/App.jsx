@@ -1,9 +1,9 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { LanguageProvider, useLanguage } from "./components/LanguageContext";
-import Navbar from "./components/navbar";
-import DisabilityList from "./components/disabilitytypes";
-import Home from "./components/home";
+import { LanguageProvider, useLanguage } from "./components/LanguageContext.jsx";
+import Navbar from "./components/Navbar.jsx";
+import DisabilityList from "./components/DisabilityTypes.jsx";
+import Home from "./components/Home.jsx";
 // import GovernmentSchemes from "./components/governmentschemes";
 // import Footer from "./components/footer";
 
