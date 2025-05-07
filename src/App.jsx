@@ -1,13 +1,37 @@
-import './App.css'
-import Navbar  from './components/Navbar.jsx'
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import { LanguageProvider, useLanguage } from "./components/LanguageContext";
+import Navbar from "./components/navbar";
+import DisabilityList from "./components/disabilitytypes";
+import Home from "./components/home";
+// import GovernmentSchemes from "./components/governmentschemes";
+// import Footer from "./components/footer";
 
 function App() {
-
   return (
-    <>
-      <Navbar />
-    </>
-  )
+      <LanguageProvider>s
+        <AppContent />
+      </LanguageProvider>
+  );
 }
 
-export default App
+function AppContent() {
+  const { language, toggleLanguage } = useLanguage();
+
+  return (
+      <>
+        <Navbar
+            language={language}
+            toggleLanguage={toggleLanguage}
+        />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/DisabilityList" element={<DisabilityList />} />
+          {/*<Route path="/schemes" element={<GovernmentSchemes />} />*/}
+        </Routes>
+        {/*<Footer />*/}
+      </>
+  );
+}
+
+export default App;

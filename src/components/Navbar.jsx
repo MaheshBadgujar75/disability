@@ -1,14 +1,10 @@
 // Navbar.js
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import {
-    Menu,
-    X,
-    Home as HomeIcon,
-    Accessibility,
-    FileText,
-    Languages,
-} from "lucide-react";
+
+// Import icons from react-icons library
+// You'll need to install this package: npm install react-icons
+import { FaHome, FaAccessibleIcon, FaFileAlt, FaBars, FaTimes, FaLanguage } from 'react-icons/fa';
 
 const translations = {
     english: {
@@ -31,61 +27,36 @@ const translations = {
     },
 };
 
-const Navbar = ({ language = "english", setLanguage, toggleLanguage }) => {
+// This component now accepts language, setLanguage, and toggleLanguage as props
+function Navbar({ language, setLanguage, toggleLanguage }) {
     const [isOpen, setIsOpen] = useState(false);
+    const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
-    const mobileMenuRef = useRef(null);
-
-    // Implement default toggleLanguage if not provided
-    const handleToggleLanguage = () => {
-        if (toggleLanguage) {
-            toggleLanguage();
-        } else if (setLanguage) {
-            // Cycle through languages: english -> marathi -> hindi -> english
-            const languageOrder = ["english", "marathi", "hindi"];
-            const currentIndex = languageOrder.indexOf(language);
-            const nextIndex = (currentIndex + 1) % languageOrder.length;
-            setLanguage(languageOrder[nextIndex]);
-        }
-    };
 
     // Track scroll position for navbar styling
     useEffect(() => {
         const handleScroll = () => {
             setScrolled(window.scrollY > 20);
         };
-        window.addEventListener("scroll", handleScroll, { passive: true });
+        window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    // Close mobile menu when clicking outside
-    useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target) && isOpen) {
-                setIsOpen(false);
-            }
-        };
-
-        document.addEventListener("mousedown", handleClickOutside);
-        return () => document.removeEventListener("mousedown", handleClickOutside);
-    }, [isOpen]);
-
     const navLinks = [
-        { to: "/", icon: <HomeIcon className="stroke-current" />, label: "home" },
-        { to: "/DisabilityList", icon: <Accessibility className="stroke-current" />, label: "disabilities" },
-        { to: "/schemes", icon: <FileText className="stroke-current" />, label: "governmentSchemes" },
+        { to: "/", icon: <FaHome />, label: "home" },
+        {
+            to: "/DisabilityList",
+            icon: <FaAccessibleIcon />,
+            label: "disabilities",
+        },
+        {
+            to: "/schemes",
+            icon: <FaFileAlt />,
+            label: "governmentSchemes",
+        },
     ];
 
-    // Make sure we're using a valid language key
-    const safeLanguage = translations[language] ? language : "english";
-    const t = translations[safeLanguage];
-
-    // Next language display text
-    const nextLanguageText = () => {
-        if (safeLanguage === "english") return "भाषा: मराठी";
-        if (safeLanguage === "marathi") return "भाषा: हिंदी";
-        return "Language: English";
-    };
+    const t = translations[language];
 
     return (
         <nav
@@ -107,7 +78,7 @@ const Navbar = ({ language = "english", setLanguage, toggleLanguage }) => {
                                 scrolled ? "bg-blue-100" : "bg-white/20"
                             } transition-all duration-300`}
                         >
-                            <Accessibility
+                            <FaAccessibleIcon
                                 className={`${
                                     scrolled ? "text-blue-600" : "text-white"
                                 } group-hover:scale-110 transition-all duration-300`}
@@ -115,25 +86,26 @@ const Navbar = ({ language = "english", setLanguage, toggleLanguage }) => {
                             />
                         </div>
                         <div className="hidden md:flex flex-col">
-                            <span
-                                className={`font-extrabold ${
-                                    scrolled ? "text-blue-600" : "text-white"
-                                } transition-all duration-300`}
-                            >
-                                {t.disabilityCare}
-                            </span>
+              <span
+                  className={`font-extrabold ${
+                      scrolled ? "text-blue-600" : "text-white"
+                  } transition-all duration-300`}
+              >
+                {t.disabilityCare}
+              </span>
                             <span
                                 className={`text-xs font-medium ${
                                     scrolled ? "text-blue-400" : "text-blue-100"
                                 } transition-all duration-300`}
                             >
-                                Empowering Everyone
-                            </span>
+                Empowering Everyone
+              </span>
                         </div>
                     </Link>
 
-                    {/* Desktop Navigation Links */}
+                    {/* Right side - Navigation Links and Language Selector */}
                     <div className="hidden lg:flex items-center space-x-4">
+                        {/* Navigation Links - Now on right side */}
                         {navLinks.map(({ to, icon, label }, index) => (
                             <Link
                                 key={to}
@@ -152,7 +124,10 @@ const Navbar = ({ language = "english", setLanguage, toggleLanguage }) => {
                                             : "bg-white/20 text-white"
                                     } rounded-full p-1 transition-all duration-300`}
                                 >
-                                    {React.cloneElement(icon, { size: 16 })}
+                                    {React.cloneElement(icon, {
+                                        size: 16,
+                                        className: `${scrolled ? "text-blue-600" : "text-white"}`
+                                    })}
                                 </div>
                                 <span>{t[label]}</span>
                                 {index === 0 && (
@@ -165,42 +140,49 @@ const Navbar = ({ language = "english", setLanguage, toggleLanguage }) => {
                             </Link>
                         ))}
 
-                        {/* Language Toggle */}
+                        {/* Language Toggle Button */}
                         <button
-                            onClick={handleToggleLanguage}
-                            className={`flex items-center gap-2 rounded-full px-4 py-2 transition-all ${
+                            onClick={toggleLanguage}
+                            className={`
+                flex items-center gap-2 rounded-full px-4 py-2 transition-all
+                ${
                                 scrolled
                                     ? "bg-blue-600 text-white hover:bg-blue-700"
                                     : "bg-white/20 text-white hover:bg-white/30 border border-white/30"
-                            }`}
+                            }
+              `}
                         >
-                            <Languages size={18} />
+                            <FaLanguage size={18} />
                             <span className="font-medium">
-                                {nextLanguageText()}
-                            </span>
+                {language === "english"
+                    ? "भाषा: मराठी"
+                    : language === "marathi"
+                        ? "भाषा: हिंदी"
+                        : "Language: English"}
+              </span>
                         </button>
                     </div>
 
                     {/* Mobile Menu Button */}
                     <button
                         onClick={() => setIsOpen(!isOpen)}
-                        className={`lg:hidden p-2 rounded-lg transition-colors ${
+                        className={`
+              lg:hidden p-2 rounded-lg transition-colors
+              ${
                             scrolled
                                 ? "text-gray-700 hover:text-blue-600 hover:bg-blue-50"
                                 : "text-white hover:bg-white/20"
-                        }`}
+                        }
+            `}
                     >
-                        {isOpen ? <X size={24} /> : <Menu size={24} />}
+                        {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
                     </button>
                 </div>
             </div>
 
             {/* Mobile Dropdown Menu */}
             {isOpen && (
-                <div
-                    ref={mobileMenuRef}
-                    className="lg:hidden bg-white shadow-lg border-t border-blue-100 animate-in fade-in slide-in-from-top duration-300"
-                >
+                <div className="lg:hidden bg-white shadow-lg border-t border-blue-100 animate-in fade-in slide-in-from-top duration-300">
                     <div className="container mx-auto">
                         <div className="px-4 py-3 space-y-1">
                             {navLinks.map(({ to, icon, label }, index) => (
@@ -220,20 +202,21 @@ const Navbar = ({ language = "english", setLanguage, toggleLanguage }) => {
                                 </Link>
                             ))}
 
-                            {/* Mobile Language Toggle */}
+                            {/* Language Toggle for Mobile */}
                             <button
-                                onClick={() => {
-                                    handleToggleLanguage();
-                                    setIsOpen(false);
-                                }}
+                                onClick={toggleLanguage}
                                 className="block w-full py-3 px-4 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg flex items-center gap-3 transition-colors"
                             >
                                 <div className="bg-blue-100 text-blue-600 rounded-full p-2">
-                                    <Languages size={18} />
+                                    <FaLanguage size={18} />
                                 </div>
                                 <span className="font-medium">
-                                    {nextLanguageText()}
-                                </span>
+                  {language === "english"
+                      ? "भाषा: मराठी"
+                      : language === "marathi"
+                          ? "भाषा: हिंदी"
+                          : "Language: English"}
+                </span>
                             </button>
                         </div>
                     </div>
@@ -241,6 +224,6 @@ const Navbar = ({ language = "english", setLanguage, toggleLanguage }) => {
             )}
         </nav>
     );
-};
+}
 
 export default Navbar;
