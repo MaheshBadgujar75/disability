@@ -98,26 +98,27 @@ const DisabilityList = () => {
         }
     };
 
-    // Decorative shapes for visual interest
+    // Updated decorative shapes with blue and white color scheme
     const DecorativeShapes = () => (
         <>
-            {/* Top left decorative shape */}
-            <div className="absolute -top-6 -left-6 w-32 h-32 bg-indigo-100 rounded-full blur-3xl opacity-70 pointer-events-none"></div>
+            {/* Left top decorative shape */}
+            <div className="absolute -top-10 -left-10 w-64 h-64 bg-blue-100 rounded-full blur-3xl opacity-70 pointer-events-none"></div>
 
-            {/* Bottom right decorative shape */}
-            <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-purple-100 rounded-full blur-3xl opacity-70 pointer-events-none"></div>
+            {/* Right bottom decorative shape */}
+            <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-blue-200 rounded-full blur-3xl opacity-60 pointer-events-none"></div>
 
-            {/* Top right small accents */}
-            <div className="absolute top-10 right-20 w-16 h-16 bg-yellow-100 rounded-full blur-2xl opacity-60 pointer-events-none"></div>
-            <div className="absolute top-20 right-40 w-8 h-8 bg-indigo-200 rounded-full blur-xl opacity-60 pointer-events-none"></div>
+            {/* Center accent */}
+            <div className="absolute top-1/3 left-1/4 w-32 h-32 bg-blue-50 rounded-full blur-2xl opacity-50 pointer-events-none"></div>
 
-            {/* Bottom left small accents */}
-            <div className="absolute bottom-20 left-10 w-12 h-12 bg-pink-100 rounded-full blur-xl opacity-60 pointer-events-none"></div>
+            {/* Small accents */}
+            <div className="absolute top-20 right-10 w-16 h-16 bg-blue-100 rounded-full blur-xl opacity-60 pointer-events-none"></div>
+            <div className="absolute bottom-40 left-20 w-24 h-24 bg-blue-50 rounded-full blur-2xl opacity-60 pointer-events-none"></div>
+            <div className="absolute top-1/2 right-1/3 w-20 h-20 bg-blue-100 rounded-full blur-xl opacity-60 pointer-events-none"></div>
         </>
     );
 
     return (
-        <div className="min-h-screen bg-gradient-to-b from-indigo-50 via-white to-indigo-50 py-28 relative overflow-hidden">
+        <div className="min-h-screen bg-white py-32 relative overflow-hidden">
             <DecorativeShapes />
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -126,7 +127,7 @@ const DisabilityList = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="text-center mb-16 relative"
+                    className="text-center mb-20 relative"
                 >
                     {/* Animated accent circles */}
                     <motion.div
@@ -136,7 +137,7 @@ const DisabilityList = () => {
                             opacity: [0.7, 0.9, 0.7]
                         }}
                         transition={{ duration: 5, repeat: Infinity, repeatType: "reverse" }}
-                        className="absolute top-0 left-1/4 w-6 h-6 rounded-full bg-yellow-300 opacity-70"
+                        className="absolute top-0 left-1/4 w-6 h-6 rounded-full bg-blue-300 opacity-70"
                     ></motion.div>
 
                     <motion.div
@@ -146,7 +147,7 @@ const DisabilityList = () => {
                             opacity: [0.7, 0.9, 0.7]
                         }}
                         transition={{ duration: 7, repeat: Infinity, repeatType: "reverse", delay: 1 }}
-                        className="absolute bottom-0 right-1/4 w-8 h-8 rounded-full bg-indigo-300 opacity-70"
+                        className="absolute bottom-0 right-1/4 w-8 h-8 rounded-full bg-blue-300 opacity-70"
                     ></motion.div>
 
                     <motion.div
@@ -156,14 +157,14 @@ const DisabilityList = () => {
                             opacity: [0.7, 0.9, 0.7]
                         }}
                         transition={{ duration: 6, repeat: Infinity, repeatType: "reverse", delay: 0.5 }}
-                        className="absolute top-12 right-1/3 w-4 h-4 rounded-full bg-pink-300 opacity-70"
+                        className="absolute top-12 right-1/3 w-4 h-4 rounded-full bg-blue-300 opacity-70"
                     ></motion.div>
 
                     <motion.span
                         initial={{ scale: 0.9, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         transition={{ duration: 0.5, delay: 0.2 }}
-                        className="bg-indigo-100 text-indigo-800 px-8 py-3 rounded-full text-sm font-medium inline-block mb-4 shadow-md hover:shadow-lg transition-shadow duration-300"
+                        className="bg-blue-50 text-blue-800 px-8 py-3 rounded-full text-sm font-medium inline-block mb-6 shadow-lg hover:shadow-xl transition-shadow duration-300"
                     >
                         {translations.discover[apiLanguage]}
                     </motion.span>
@@ -172,7 +173,7 @@ const DisabilityList = () => {
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.7, delay: 0.4 }}
-                        className="text-5xl md:text-6xl font-extrabold text-gray-900 mb-6 tracking-tight bg-clip-text bg-gradient-to-r from-indigo-700 to-indigo-500 text-transparent"
+                        className="text-5xl md:text-6xl font-extrabold mb-6 tracking-tight text-blue-700"
                     >
                         {translations.title[apiLanguage]}
                     </motion.h1>
@@ -181,25 +182,25 @@ const DisabilityList = () => {
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.7, delay: 0.6 }}
-                        className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
+                        className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed"
                     >
                         {translations.description[apiLanguage]}
                     </motion.p>
                 </motion.div>
 
-                {/* Category Filters */}
+                {/* Category Filters - Enhanced with blue and white color scheme */}
                 <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.7 }}
-                    className="flex flex-wrap justify-center gap-4 mb-14"
+                    className="flex flex-wrap justify-center gap-5 mb-16"
                 >
                     {Object.entries(translations.filters).map(([category, translation], index) => (
                         <motion.button
                             key={category}
                             whileHover={{
                                 scale: 1.05,
-                                boxShadow: "0 10px 25px -5px rgba(79, 70, 229, 0.2)",
+                                boxShadow: "0 15px 30px -5px rgba(59, 130, 246, 0.2)",
                             }}
                             whileTap={{ scale: 0.95 }}
                             initial={{ opacity: 0, y: 20 }}
@@ -209,9 +210,10 @@ const DisabilityList = () => {
                                 delay: 0.8 + (index * 0.1)
                             }}
                             onClick={() => setCategoryFilter(category)}
-                            className={`px-7 py-3 rounded-full text-base font-medium transition-all duration-300 ${categoryFilter === category
-                                ? "bg-indigo-600 text-white shadow-lg ring-2 ring-indigo-500 ring-offset-2"
-                                : "bg-white text-gray-700 hover:bg-gray-50 shadow-sm"
+                            className={`px-8 py-4 rounded-full text-base font-medium transition-all duration-300 ${
+                                categoryFilter === category
+                                    ? "bg-blue-600 text-white shadow-xl ring-2 ring-blue-400 ring-offset-2"
+                                    : "bg-white text-slate-700 hover:bg-gray-50 shadow-md hover:shadow-lg border border-slate-100"
                             }`}
                         >
                             {translation[apiLanguage]}
@@ -219,17 +221,17 @@ const DisabilityList = () => {
                     ))}
                 </motion.div>
 
-                {/* Loader / Error Handling */}
+                {/* Loader / Error Handling - Enhanced */}
                 {loading ? (
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        className="flex justify-center my-16"
+                        className="flex justify-center my-20"
                     >
-                        <div className="flex items-center justify-center space-x-2">
-                            <div className="w-4 h-4 bg-indigo-600 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                            <div className="w-4 h-4 bg-indigo-500 rounded-full animate-bounce" style={{ animationDelay: '0.3s' }}></div>
-                            <div className="w-4 h-4 bg-indigo-400 rounded-full animate-bounce" style={{ animationDelay: '0.5s' }}></div>
+                        <div className="flex items-center justify-center space-x-3">
+                            <div className="w-5 h-5 bg-blue-300 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                            <div className="w-5 h-5 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '0.3s' }}></div>
+                            <div className="w-5 h-5 bg-blue-700 rounded-full animate-bounce" style={{ animationDelay: '0.5s' }}></div>
                         </div>
                     </motion.div>
                 ) : error ? (
@@ -237,7 +239,7 @@ const DisabilityList = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
-                        className="text-center py-16 px-6 bg-gradient-to-br from-red-50 to-pink-50 rounded-2xl border border-red-100 shadow-lg"
+                        className="text-center py-16 px-8 bg-red-50 rounded-3xl border border-red-100 shadow-xl"
                     >
                         <svg className="w-16 h-16 text-red-500 mx-auto mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -250,54 +252,54 @@ const DisabilityList = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
-                        className="text-center py-16 px-6 bg-gradient-to-br from-yellow-50 to-amber-50 rounded-2xl border border-yellow-100 shadow-lg"
+                        className="text-center py-16 px-8 bg-blue-50 rounded-3xl border border-blue-100 shadow-xl"
                     >
-                        <svg className="w-16 h-16 text-yellow-500 mx-auto mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <svg className="w-16 h-16 text-blue-500 mx-auto mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                         </svg>
-                        <p className="text-2xl font-semibold text-yellow-700">{translations.noDisabilities[apiLanguage]}</p>
+                        <p className="text-2xl font-semibold text-blue-700">{translations.noDisabilities[apiLanguage]}</p>
                     </motion.div>
                 ) : (
                     <>
-                        {/* Disability Cards */}
+                        {/* Disability Cards - Redesigned with blue and white color scheme */}
                         <motion.div
                             variants={containerVariants}
                             initial="hidden"
                             animate="visible"
-                            className="grid md:grid-cols-2 lg:grid-cols-2 gap-12 mb-16"
+                            className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 mb-20"
                         >
                             {disabilityData.disabilities.map((disability, index) => (
                                 <motion.div
                                     key={disability._id}
                                     variants={itemVariants}
                                     whileHover={{
-                                        y: -8,
-                                        boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.15)",
+                                        y: -10,
+                                        boxShadow: "0 30px 60px -15px rgba(0, 0, 0, 0.2)",
                                         transition: { duration: 0.3 }
                                     }}
-                                    className="bg-white rounded-2xl overflow-hidden flex flex-col h-full shadow-lg group"
+                                    className="bg-white rounded-3xl overflow-hidden flex flex-col h-full shadow-xl group border border-slate-100"
                                 >
-                                    <div className="h-72 w-full relative overflow-hidden">
+                                    <div className="h-64 w-full relative overflow-hidden">
                                         {disability.image ? (
                                             <>
                                                 <motion.img
                                                     src={disability.image}
                                                     alt={disability.name}
                                                     className="w-full h-full object-cover"
-                                                    whileHover={{ scale: 1.08 }}
+                                                    whileHover={{ scale: 1.1 }}
                                                     transition={{ duration: 1 }}
                                                 />
-                                                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+                                                <div className="absolute inset-0 bg-blue-900/30"></div>
                                             </>
                                         ) : (
-                                            <div className="w-full h-full bg-gradient-to-br from-indigo-100 to-purple-100 flex items-center justify-center overflow-hidden">
+                                            <div className="w-full h-full bg-blue-50 flex items-center justify-center overflow-hidden">
                                                 <motion.svg
                                                     animate={{
                                                         rotateZ: [0, 10, 0, -10, 0],
                                                         scale: [1, 1.1, 1, 1.1, 1]
                                                     }}
                                                     transition={{ duration: 10, repeat: Infinity, repeatType: "reverse" }}
-                                                    className="w-32 h-32 text-indigo-300"
+                                                    className="w-32 h-32 text-blue-300"
                                                     fill="currentColor"
                                                     viewBox="0 0 20 20"
                                                 >
@@ -310,17 +312,17 @@ const DisabilityList = () => {
                                             initial={{ opacity: 0, y: -20 }}
                                             animate={{ opacity: 1, y: 0 }}
                                             transition={{ delay: 0.2 + (index * 0.1), duration: 0.5 }}
-                                            className="absolute top-6 right-6 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold text-indigo-700 shadow-md"
+                                            className="absolute top-6 right-6 bg-white/90 backdrop-blur-sm px-5 py-2 rounded-full text-sm font-semibold text-blue-700 shadow-lg"
                                         >
                                             {disability.category || translations.category[apiLanguage]}
                                         </motion.div>
                                     </div>
 
-                                    <div className="p-8 flex flex-col flex-grow border-t border-gray-100">
-                                        <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-indigo-700 transition-colors">
+                                    <div className="p-8 flex flex-col flex-grow border-t border-slate-100">
+                                        <h3 className="text-2xl font-bold text-slate-800 mb-3 group-hover:text-blue-600 transition-colors">
                                             {disability.name}
                                         </h3>
-                                        <p className="text-gray-600 mb-8 flex-grow leading-relaxed">
+                                        <p className="text-slate-600 mb-8 flex-grow leading-relaxed">
                                             {disability.shortDescription ||
                                                 (disability.description && disability.description.length > 150
                                                     ? `${disability.description.substring(0, 150)}...`
@@ -329,7 +331,7 @@ const DisabilityList = () => {
 
                                         <Link
                                             to={`/disabilities/${disability._id}`}
-                                            className="group inline-flex items-center justify-center gap-2 bg-gradient-to-r from-indigo-600 to-indigo-700 text-white px-6 py-3 rounded-xl hover:from-indigo-700 hover:to-indigo-800 transition-all duration-300 text-center font-medium shadow-md hover:shadow-lg"
+                                            className="group inline-flex items-center justify-center gap-2 bg-blue-600 text-white px-6 py-4 rounded-xl hover:shadow-2xl transition-all duration-300 text-center font-medium shadow-lg hover:bg-blue-700"
                                         >
                                             {translations.learnMore[apiLanguage]}
                                             <motion.svg
@@ -348,24 +350,24 @@ const DisabilityList = () => {
                             ))}
                         </motion.div>
 
-                        {/* Pagination */}
+                        {/* Pagination - Enhanced with blue and white color scheme */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.3 }}
-                            className="flex flex-col sm:flex-row items-center justify-between mt-12 bg-white p-6 rounded-2xl shadow-lg border border-indigo-50"
+                            className="flex flex-col sm:flex-row items-center justify-between mt-12 bg-white p-8 rounded-3xl shadow-xl border border-slate-100"
                         >
-                            <div className="text-gray-600 mb-4 sm:mb-0 font-medium">
-                                {translations.showing[apiLanguage]} <span className="font-bold text-indigo-700">{disabilityData.disabilities.length}</span> {translations.of[apiLanguage]} <span className="font-bold text-indigo-700">{disabilityData.total}</span> {translations.types[apiLanguage]}
+                            <div className="text-slate-600 mb-6 sm:mb-0 font-medium text-lg">
+                                {translations.showing[apiLanguage]} <span className="font-bold text-blue-600">{disabilityData.disabilities.length}</span> {translations.of[apiLanguage]} <span className="font-bold text-blue-600">{disabilityData.total}</span> {translations.types[apiLanguage]}
                             </div>
 
-                            <div className="flex gap-4">
+                            <div className="flex gap-5">
                                 <motion.button
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
                                     onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
                                     disabled={page === 1}
-                                    className="flex items-center gap-2 px-6 py-3 bg-white border border-gray-200 text-gray-700 rounded-xl hover:bg-gray-50 disabled:bg-gray-50 disabled:text-gray-400 transition-colors duration-300 shadow-sm font-medium"
+                                    className="flex items-center gap-2 px-6 py-3 bg-white border border-slate-200 text-slate-700 rounded-xl hover:bg-slate-50 disabled:bg-slate-50 disabled:text-slate-400 transition-colors duration-300 shadow-md font-medium"
                                 >
                                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -373,7 +375,7 @@ const DisabilityList = () => {
                                     {translations.pagination.previous[apiLanguage]}
                                 </motion.button>
 
-                                <div className="flex items-center justify-center bg-indigo-100 text-indigo-700 font-bold rounded-xl w-12 h-12 shadow-inner">
+                                <div className="flex items-center justify-center bg-blue-50 text-blue-700 font-bold rounded-xl w-14 h-14 shadow-inner">
                                     {page}
                                 </div>
 
@@ -382,7 +384,7 @@ const DisabilityList = () => {
                                     whileTap={{ scale: 0.95 }}
                                     onClick={() => setPage((prev) => prev + 1)}
                                     disabled={page >= Math.ceil(disabilityData.total / disabilityData.limit)}
-                                    className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-indigo-600 to-indigo-700 text-white rounded-xl hover:from-indigo-700 hover:to-indigo-800 disabled:from-indigo-300 disabled:to-indigo-300 transition-colors duration-300 shadow-md font-medium"
+                                    className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-xl hover:shadow-xl hover:bg-blue-700 disabled:bg-slate-300 transition-all duration-300 shadow-lg font-medium"
                                 >
                                     {translations.pagination.next[apiLanguage]}
                                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

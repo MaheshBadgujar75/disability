@@ -1,11 +1,11 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { LanguageProvider, useLanguage } from "./components/LanguageContext.jsx";
-import Navbar from "/components/Navbar.jsx";
+import Navbar from "./components/Navbar.jsx";
 import DisabilityList from "./components/DisabilityTypes.jsx";
 import Home from "./components/Home.jsx";
-// import GovernmentSchemes from "./components/governmentschemes";
-// import Footer from "./components/footer";
+import GovernmentSchemes from "./components/GovernmentScheme.jsx";
+import Footer from "./components/footer";
 
 function App() {
   return (
@@ -27,9 +27,9 @@ function AppContent() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/DisabilityList" element={<DisabilityList />} />
-          {/*<Route path="/schemes" element={<GovernmentSchemes />} />*/}
+          <Route path="/schemes" element={<GovernmentSchemes />} />
         </Routes>
-        {/*<Footer />*/}
+        <Footer />
       </>
   );
 }

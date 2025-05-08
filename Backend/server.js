@@ -12,7 +12,7 @@ const connectDB = require("./config/db");
 // Import routes
 const disabilityRoutes = require("./routes/disabilities");
 const disabilityTypeRoutes = require("./routes/disabilitiestypes");
-const governmentSchemeRoutes = require("./routes/govSchemes");
+const governmentSchemeRoutes = require("./routes/govschemes");
 
 dotenv.config();
 
@@ -96,7 +96,7 @@ if (cluster.isPrimary) {
 
   // Allowed origins for CORS
   const allowedOrigins = [
-    "http://localhost:5174",
+    "http://localhost:5175",
     "https://yourfrontenddomain.com",
   ];
 
